@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuarios | Sistema de Gestión</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tu CSS global -->
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+  <!-- ✅ Menú fijo (fragmento compartido) -->
+  <header th:replace="fragments/menu :: menu"></header>
+
+  <!-- ✅ Contenido principal -->
+  <main class="container mt-4">
+    <div class="content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h1 class="text-primary mb-0">Vistas</h1>
+          <p class="mb-0">Bienvenido al módulo de mantenimiento de Vistas.</p>
+        </div>
+  	<!-- ✅ Botón para crear nuevo rol -->
+  	<a th:href="@{/vistas/nuevo}" class="btn btn-success">
+  	  <i class="bi bi-plus-circle"></i> + Vista
+  	</a>
+
+      </div>
+
+      <table class="table table-striped table-hover mt-3 align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+			<th scope="col">Ruta</th>
+            <th scope="col" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ✅ Recorre la lista de usuarios -->
+          <tr th:each="vista : ${vistas}">
+            <td th:text="${vista.vistaID}"></td>
+            <td th:text="${vista.nombreVista}"></td>
+            <td th:text="${vista.descripcion}"></td>
+			<td th:text="${vista.ruta}"></td>
+            <td class="text-center">
+  			<a th:href="@{'/vistas/editar/' + ${vista.vistaID}}" 
+  			   class="btn btn-sm btn-outline-primary me-1">
+  			  <i class="bi bi-pencil-square"></i> Editar
+  			</a>
+
+  			<a th:href="@{'/vistas/eliminar/' + ${vista.vistaID}}" 
+  			   class="btn btn-sm btn-outline-danger"
+  			   onclick="return confirm('¿Seguro que deseas desactivar esta vista?')">
+  			  <i class="bi bi-trash"></i> Desactivar
+  			</a>	
+            </td>
+          </tr>
+
+          <!-- ✅ Si no hay usuarios -->
+  	  <tr th:if="${#lists.isEmpty(vistas)}">
+  	    <td colspan="6" class="text-center text-muted">
+  	      No hay roles registrados.
+  	    </td>
+  	  </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- ✅ Footer fijo (fragmento compartido) -->
+  <footer th:replace="fragments/footer :: footer"></footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

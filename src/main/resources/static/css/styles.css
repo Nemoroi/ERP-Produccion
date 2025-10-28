@@ -1,0 +1,84 @@
+/* ========== ESTILOS GLOBALES ========== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 70px; /* espacio para el menú fijo */
+}
+
+/* ========== CONTENIDO PRINCIPAL ========== */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ========== NAVBAR FIJO SUPERIOR ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030; /* sobre el contenido */
+}
+
+/* ========== FOOTER FIJO INFERIOR ========== */
+footer.footer-dark {
+  background-color: #212529;
+  color: #fff;
+  text-align: center;
+  padding: 0.8rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #dee2e6;
+  z-index: 1020;
+}
+
+/* ========== TARJETAS Y SECCIONES ========== */
+.welcome {
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.vista-card {
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vista-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Aplicar overflow hidden desde el inicio para evitar destellos */
+.alert-auto-dismiss {
+  overflow: hidden;
+  animation: fadeAndSlideOut 0.5s ease-in-out 4s forwards;
+}
+
+/* Ajusta max-height inicial según tu contenido (ej. 300px o 500px) */
+@keyframes fadeAndSlideOut {
+  0% {
+    opacity: 1;
+    max-height: 500px;   /* inicial seguro para contenido alto */
+    margin-bottom: 1rem; /* margen original (bootstrap usa 1rem) */
+    padding-top: 0.75rem;   /* opcional: poner valores iniciales coherentes */
+    padding-bottom: 0.75rem;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    margin:0;
+    padding:0;
+    /* overflow ya está en la regla base */
+  }
+}
+

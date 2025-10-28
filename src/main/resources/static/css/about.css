@@ -1,0 +1,33 @@
+/* ====== ESTILOS DE LA PÁGINA ABOUT (DMS SSOMA) ====== */
+.about-section {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 40px;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.about-section h2 {
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.about-section p {
+  text-align: justify;
+  line-height: 1.7;
+}
+.highlight {
+  background: #e9f4ff;
+  border-left: 4px solid #007bff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.tech-list {
+  list-style: none;
+  padding: 0;
+}
+.tech-list li::before {
+  content: "📘 ";
+  color: #007bff;
+}
