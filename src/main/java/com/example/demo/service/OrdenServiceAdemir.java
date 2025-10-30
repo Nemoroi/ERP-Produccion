@@ -7,4 +7,8 @@ import com.example.demo.model.OrdenAdemir;
 public interface OrdenServiceAdemir {
 
 	List<OrdenAdemir> listarOrdenList();
+	
+	void cerrarOrden(Integer id);
+
+	
 }

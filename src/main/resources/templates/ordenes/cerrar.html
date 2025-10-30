@@ -27,7 +27,8 @@
 				</div>
 				<!-- ✅ Botón para crear nuevo usuario -->
 				<div class="col-md-2">
-					<a th:href="@{/ordenes/listar}" class="btn btn-success w-100"> <i class="fa-solid fa-arrow-left"></i>
+					<a th:href="@{/ordenes/listar}" class="btn btn-success w-100"> <i
+							class="fa-solid fa-arrow-left"></i>
 						Regresar
 					</a>
 				</div>
@@ -49,9 +50,13 @@
 						<td th:text="${orden.producto.nombre}"></td>
 						<td th:text="${orden.rend}"></td>
 						<td class="text-center">
-							<a class="btn btn-sm btn-outline-danger">
-								<i class="fa-solid fa-ban"></i> Cerrar Orden
-							</a>
+							<form th:action="@{'/ordenes/cerrar/' + ${orden.idOrden}}" method="post"
+								style="display:inline;">
+								<button type="submit" class="btn btn-sm btn-outline-danger"
+									onclick="return confirm('¿Seguro que deseas cerrar esta orden?');">
+									<i class="fa-solid fa-ban"></i> Cerrar Orden
+								</button>
+							</form>
 						</td>
 					</tr>
 

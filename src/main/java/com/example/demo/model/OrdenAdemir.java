@@ -38,4 +38,7 @@ public class OrdenAdemir {
 	@Column(name="Rendimiento")
 	private Double rend;
 
+	@Column(name = "Estado")
+	private String estado;
+
 }
