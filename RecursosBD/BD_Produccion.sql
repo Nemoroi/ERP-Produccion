@@ -112,28 +112,15 @@ CREATE TABLE Orden_Fabricacion (
     Cantidad_Fabricada DECIMAL(10,3) DEFAULT 0.00,
     Estado ENUM('Planificada','En Proceso','Cerrada','Anulada') DEFAULT 'Planificada',
     Rendimiento DECIMAL(6,2) DEFAULT NULL,
-    UsuarioCreacionID INT NOT NULL,
+    Usuario_Creacion_ID INT NOT NULL,
     UsuarioCierreID INT DEFAULT NULL,
     Flag_MotivoCierre BOOLEAN DEFAULT FALSE,
     Fecha_Creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Fecha_Cierre DATETIME DEFAULT NULL,
     FOREIGN KEY (ProductoID) REFERENCES Maestra_Productos(ProductoID),
-    FOREIGN KEY (UsuarioCreacionID) REFERENCES Usuario(UsuarioID),
+    FOREIGN KEY (Usuario_Creacion_ID) REFERENCES Usuario(UsuarioID),
     FOREIGN KEY (UsuarioCierreID) REFERENCES Usuario(UsuarioID)
 );
-
--- Trigger para iniciar los códigos de orden desde 20000
-DELIMITER //
-CREATE TRIGGER trg_codigo_orden
-BEFORE INSERT ON Orden_Fabricacion
-FOR EACH ROW
-BEGIN
-    IF NEW.Codigo_Orden IS NULL THEN
-        SET NEW.Codigo_Orden = 20000 + (SELECT IFNULL(MAX(OrdenID),0) FROM Orden_Fabricacion);
-    END IF;
-END;
-//
-DELIMITER ;
 
 -- ==========================================================
 -- TABLA DETALLE ORDEN DE FABRICACION

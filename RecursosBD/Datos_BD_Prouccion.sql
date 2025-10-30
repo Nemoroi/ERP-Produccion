@@ -123,7 +123,7 @@ VALUES
 -- ORDEN DE FABRICACIÓN
 -- ==========================================================
 INSERT INTO Orden_Fabricacion 
-(Codigo_Orden, ProductoID, Cantidad_Planificada, Cantidad_Fabricada, Estado, Rendimiento, UsuarioCreacionID)
+(Codigo_Orden, ProductoID, Cantidad_Planificada, Cantidad_Fabricada, Estado, Rendimiento, Usuario_Creacion_ID)
 VALUES
 (20000, 1, 1000, 980, 'Cerrada', 98.0, 2),   -- Laura Gómez crea
 (20001, 2, 800, 810, 'Cerrada', 101.3, 2),
