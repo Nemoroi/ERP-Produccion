@@ -25,5 +25,12 @@ public class OrdenControllerAdemir {
         return "ordenes/listar";
     }
 	
+	@GetMapping("/cerrar")
+	public String cerrar(Model model) {
+	    List<OrdenAdemir> lstCerrarOrden = ordenService.listarOrdenList().stream().filter(o -> o.getRend() < 100).toList();
+	    model.addAttribute("ordenes", lstCerrarOrden);
+	    return "ordenes/cerrar";
+	}
+
 
 }

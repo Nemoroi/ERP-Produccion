@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Ordenes | Sistema de Gestión</title>
+	<title>Cerrar Ordenes | Sistema de Gestión</title>
 
 	<!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,17 +22,13 @@
 		<div class="content">
 			<div class="d-flex justify-content-between align-items-center mb-4">
 				<div>
-					<h1 class="text-primary mb-0">Ordenes</h1>
-					<p class="mb-0">Bienvenido al módulo de Listado de Ordenes.</p>
+					<h1 class="text-primary mb-0">Cerrar Ordenes</h1>
+					<p class="mb-0">Bienvenido al módulo de Cerrado de Ordenes.</p>
 				</div>
 				<!-- ✅ Botón para crear nuevo usuario -->
 				<div class="col-md-2">
-					<a class="btn btn-success w-100 mb-2"> <i class="fa-solid fa-plus"></i>
-						Nuevo
-					</a>
-				
-					<a th:href="@{/ordenes/cerrar}" class="btn btn-danger w-100"> <i class="fa-solid fa-close"></i>
-						Cerrar Orden
+					<a th:href="@{/ordenes/listar}" class="btn btn-success w-100"> <i class="fa-solid fa-arrow-left"></i>
+						Regresar
 					</a>
 				</div>
 			</div>
@@ -42,10 +38,8 @@
 					<tr>
 						<th scope="col">Codigo</th>
 						<th scope="col">Producto</th>
-						<th scope="col">Cant. Planificada</th>
-						<th scope="col">Cant. Fabricada</th>
 						<th scope="col">Rendimiento</th>
-						<th scope="col" class="text-center">Notificar</th>
+						<th scope="col" class="text-center">Accion</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,15 +47,10 @@
 					<tr th:each="orden : ${ordenes}">
 						<td th:text="${orden.codOrden}"></td>
 						<td th:text="${orden.producto.nombre}"></td>
-						<td th:text="${orden.cantPlan}"></td>
-						<td th:text="${orden.cantFab}"></td>
 						<td th:text="${orden.rend}"></td>
 						<td class="text-center">
-							<a class="btn btn-sm btn-outline-primary me-1">
-								<i class="fa-solid fa-cart-flatbed"></i> Consumo
-							</a>
-							<a class="btn btn-sm btn-outline-secondary me-1">
-								<i class="fa-solid fa-industry"></i> Produccion
+							<a class="btn btn-sm btn-outline-danger">
+								<i class="fa-solid fa-ban"></i> Cerrar Orden
 							</a>
 						</td>
 					</tr>
